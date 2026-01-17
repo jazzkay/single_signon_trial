@@ -1,47 +1,55 @@
-This project is a Single Sign-On (SSO) authentication server built to enable users to securely authenticate once and access multiple applications without repeated logins. It follows OAuth2-style authentication principles using JWT tokens for stateless and secure session management.
+🔐 Single Sign-On (SSO) Authentication System
+📌 Project Overview
 
-🚀 Features
+This project is a Single Sign-On (SSO) authentication server that allows users to authenticate once and securely access protected resources. It demonstrates OAuth2-style authentication using JWT, centralized login, and secure session handling.
+
+🧩 Features
 
 User registration and login
 
-Secure password hashing
+Secure password hashing using bcrypt
 
-JWT-based authentication & authorization
+JWT-based authentication and authorization
 
-Token validation and protected routes
+Token-protected API routes
 
-Centralized authentication for multiple client apps
+Centralized SSO server logic
 
-Scalable and stateless architecture
+Simple client interface for testing authentication flow
 
-🛠 Tech Stack
+🛠️ Tech Stack
 
 Backend: Node.js, Express.js
 
 Authentication: JWT (JSON Web Tokens)
 
-Security: bcrypt for password hashing
+Security: bcrypt
 
-Database: SQLite
+Database: SQLite (sso.db)
 
-API Testing: Postman
+Frontend: HTML (test client)
+
+📂 Project Structure
+├── node_modules/        # Installed dependencies
+├── public/              # Static files
+├── .env.ini             # Environment variables
+├── client.html          # Sample client for SSO testing
+├── package.json         # Project metadata & dependencies
+├── package-lock.json    # Dependency lock file
+├── server.js             # Main SSO server logic
+├── sso.db               # SQLite database
 
 ⚙️ How It Works
 
 User registers or logs in via the SSO server
 
-Server verifies credentials and issues a JWT
+Server validates credentials and generates a JWT
 
-Client applications use the JWT for authentication
+Token is sent to the client
 
-Protected routes validate tokens before granting access
+Client uses the token to access protected routes
 
-📂 Project Structure
-/routes        → Authentication routes  
-/controllers  → Business logic  
-/models       → Database models  
-/middleware   → JWT verification  
-/database     → SQLite configuration  
+Middleware verifies JWT before granting access
 
 ▶️ Getting Started
 Prerequisites
@@ -50,35 +58,44 @@ Node.js installed
 
 npm package manager
 
-Installation
+Installation & Run
 git clone https://github.com/your-username/sso-project.git
 cd sso-project
 npm install
-npm start
+node server.js
 
-🔐 Security Highlights
 
-Passwords hashed using bcrypt
+Open client.html in your browser to test the authentication flow.
 
-JWT expiration and verification
+🔐 Security Measures
 
-Middleware-based route protection
+Passwords stored as hashed values
+
+JWT-based stateless authentication
+
+Token validation middleware
+
+Environment-based configuration
 
 🎯 Use Cases
 
-Central login system for multiple web apps
+Central authentication service for multiple applications
 
-Enterprise authentication services
+Learning OAuth2 & SSO concepts
 
-Learning OAuth2 and authentication workflows
+Backend authentication system practice
 
-📌 Future Enhancements
+Full-stack authentication demos
 
-Refresh token implementation
+🚧 Future Enhancements
+
+Refresh token support
 
 Role-based access control (RBAC)
 
-OAuth provider integration (Google, GitHub)
+OAuth provider login (Google, GitHub)
+
+Multi-client application support
 
 👨‍💻 Author
 
