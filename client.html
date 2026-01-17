@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SSO Client</title>
+</head>
+<body>
+  <button onclick="login()">Login with MySSO</button>
+  <script>
+    function login() {
+      // Redirect to your SSO's /auth endpoint
+      window.location.href = 'http://localhost:3000/auth?client_id=my-client-app&redirect_uri=http://localhost:8000/callback';
+    }
+
+    // After redirect back, check for ?code= in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    if (code) {
+      console.log('Authorization Code:', code);
+
+      // Exchange code for token (simulate with fetch)
+      fetch('http://localhost:3000/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_id: 'my-client-app',
+          client_secret: 'client-secret-123',
+          code: code
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Access Token:', data.access_token);
+        alert('Login successful! Token: ' + data.access_token);
+      });
+    }
+  </script>
+</body>
+</html>
